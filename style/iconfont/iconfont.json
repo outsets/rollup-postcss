@@ -1,0 +1,16 @@
+{
+  "id": "2125213",
+  "name": "outsets",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "15617013",
+      "name": "hiking",
+      "font_class": "hiking",
+      "unicode": "e88c",
+      "unicode_decimal": 59532
+    }
+  ]
+}
