@@ -6,7 +6,7 @@
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
-    "start": "sirv dist --cors --port 7000"
+    "start": "serve dist --cors -l 7000"
   },
   "repository": {
     "type": "git",
@@ -24,11 +24,11 @@
     "@rollup/plugin-node-resolve": "^9.0.0",
     "postcss-url": "^8.0.0",
     "rollup": "^2.29.0",
-    "rollup-plugin-copy": "^3.3.0",
+    "rollup-plugin-copy-watch": "0.0.1",
     "rollup-plugin-livereload": "^2.0.0",
     "rollup-plugin-postcss": "^3.1.8",
     "rollup-plugin-terser": "^7.0.2",
     "sass": "^1.27.0",
-    "sirv-cli": "^1.0.6"
+    "serve": "^11.3.2"
   }
 }

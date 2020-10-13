@@ -4,7 +4,7 @@ import commonjs from "@rollup/plugin-commonjs";
 import { terser } from "rollup-plugin-terser";
 import postcss from "rollup-plugin-postcss";
 import livereload from "rollup-plugin-livereload";
-import copy from "rollup-plugin-copy";
+import copy from "rollup-plugin-copy-watch";
 
 const production = !process.env.ROLLUP_WATCH;
 const cssBundle = path.resolve(__dirname, "dist/style/bundle.css");
@@ -41,10 +41,11 @@ export default {
     }),
 
     copy({
+      watch: ["pages", "assets", "lib"],
       targets: [
         { src: "assets/**/*", dest: "dist/assets" },
         { src: "lib/**/*", dest: "dist/lib" },
-        { src: "page/**/*", dest: "dist" }
+        { src: "pages/**/*", dest: "dist/pages" }
       ]
     }),
     !production && serve(),
@@ -67,14 +68,10 @@ function serve() {
   return {
     writeBundle() {
       if (server) return;
-      server = require("child_process").spawn(
-        "npm",
-        ["run", "start", "--", "--dev"],
-        {
-          stdio: ["ignore", "inherit", "inherit"],
-          shell: true
-        }
-      );
+      server = require("child_process").spawn("npm", ["run", "start"], {
+        stdio: ["ignore", "inherit", "inherit"],
+        shell: true
+      });
 
       process.on("SIGTERM", toExit);
       process.on("exit", toExit);
